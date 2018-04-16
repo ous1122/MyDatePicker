@@ -33,7 +33,15 @@ class ViewController: UIViewController {
         
 
         if timeLabel.text == nowTime.text {
-            view.backgroundColor = UIColor.red
+            view.backgroundColor=UIColor.red
+            let Alert = UIAlertController(title: "알람", message: "설정한 시간이 되었어요.", preferredStyle: .alert ) //얼럿을 띄울 창을 설정한다.
+            let ok = UIAlertAction(title: "종료", style: .default, handler:{ (action:UIAlertAction) ->Void in self.view.backgroundColor = UIColor.white})
+            //얼럿에 나올 버튼 액션을 추가한다. handler구문에 대해서는 주의하여 작성할것
+            
+            let cancle = UIAlertAction(title: "취소", style: .cancel , handler:{ (action:UIAlertAction) ->Void in self.view.backgroundColor = UIColor.green })
+            Alert.addAction(ok) //위에 만든 액션을 얼럿에 나올 버튼으로 추가한다.
+            Alert.addAction(cancle)
+            present(Alert, animated: true, completion: nil)
         }
         
     }
